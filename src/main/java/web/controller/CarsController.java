@@ -25,5 +25,6 @@ public class CarsController {
         model.addAttribute("messages", messages);
         model.addAttribute("cars", carService.severalCars(count));
         return "cars";
+
     }
 }
