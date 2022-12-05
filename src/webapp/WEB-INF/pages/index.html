@@ -1,15 +1,37 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Users list</title>
 </head>
 <body>
-<div>
-    <th:block th:each="msg : ${messages}">
-        <h1 th:text="${msg}"></h1>
-    </th:block>
-</div>
+<h1>Users list</h1>
+<table border="20">
+    <tr>
+        <th th:width="50">Id</th>
+        <th th:width="150">Name</th>
+        <th th:width="150">Surname</th>
+        <th th:width="150">Phone Number </th>
+
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:utext="${user.getId()}">Id</td>
+        <td><a th:href="@{'/' + ${user.getId()}}" th:utext="${user.getName()}">Name</a></td>
+        <td th:utext="${user.getSurname()}">Surname</td>
+        <td th:utext="${user.getPhoneNumber()}"><center>Phone_Number</center></td>
+        <td>
+            <form th:action="@{'edit/' + ${user.getId()}}">
+                <center> <input type="submit" class="buttonEdit" value="Edit"/></center>
+            </form>
+        </td>
+        <td>
+            <form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+                <center> <input type="submit" class="buttonDelete" value="Delete"/></center>
+            </form>
+        </td>
+    </tr>
+</table>
+<br/>
+<button onclick="window.location.href = '/new';">Add new user</button>
 </body>
 </html>
