@@ -1,4 +1,4 @@
-package web.model;
+package SpringBoot.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,9 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
-
-
 @Data
 @Builder
 @AllArgsConstructor
@@ -17,9 +14,9 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "name")
     private String name;
